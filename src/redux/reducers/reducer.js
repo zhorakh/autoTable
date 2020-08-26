@@ -13,16 +13,25 @@ export default function reducer(state = initState, action) {
 						let vin = null;
 						if (model.children.type === 'year') {
 							year = model.children.value.toString();
+							for (vin of model.children.children) {
+								newData.push({
+									country: country.value,
+									brand: brand.value,
+									model: model.value,
+									year: year,
+									vin: vin.value,
+								});
+							}
 						} else {
 							vin = model.children.value;
+							newData.push({
+								country: country.value,
+								brand: brand.value,
+								model: model.value,
+								year: year,
+								vin: vin,
+							});
 						}
-						newData.push({
-							country: country.value,
-							brand: brand.value,
-							model: model.value,
-							year: year,
-							vin: vin,
-						});
 					}
 				}
 			}
